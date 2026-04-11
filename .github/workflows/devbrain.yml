@@ -1,0 +1,22 @@
+name: GitBrain PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  gitbrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run GitBrain
+        run: node action/index.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

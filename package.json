@@ -1,11 +1,15 @@
 {
-  "name": "devbrain",
+  "name": "gitbrain",
   "version": "0.1.0",
-  "description": "DevBrain CLI for Git-based developer insights and PR risk analysis.",
+  "description": "AI-powered Git CLI for commit analysis and PR risk assessment",
   "bin": {
-    "devbrain": "./bin/index.js"
+    "gitbrain": "./bin/index.js"
   },
   "type": "module",
+  "files": [
+    "bin",
+    "src"
+  ],
   "engines": {
     "node": ">=18"
   },
@@ -15,9 +19,18 @@
     "check": "node --check ./bin/index.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "chalk": "^5.3.0",
     "commander": "^11.0.0",
+    "openai": "^4.104.0",
     "simple-git": "^3.19.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "git",
+    "ai",
+    "developer-tools"
+  ],
+  "author": "Bright"
 }

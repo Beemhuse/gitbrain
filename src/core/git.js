@@ -2,10 +2,17 @@ import simpleGit from "simple-git";
 
 const git = simpleGit({ baseDir: process.cwd() });
 
+class NotGitRepoError extends Error {
+  constructor(message = "Not a Git repository") {
+    super(message);
+    this.name = "NotGitRepoError";
+  }
+}
+
 async function ensureRepository() {
   const isRepo = await git.checkIsRepo();
   if (!isRepo) {
-    throw new Error("Current directory is not a Git repository. Run this command inside a repository root.");
+    throw new NotGitRepoError();
   }
 }
 
@@ -21,7 +28,30 @@ export async function getRecentCommits(options = { maxCount: 5 }) {
   }));
 }
 
+export async function getTodayCommits() {
+  await ensureRepository();
+  const startOfDay = new Date();
+  startOfDay.setHours(0, 0, 0, 0);
+
+  const log = await git.log();
+  const todayCommits = log.all
+    .filter((commit) => {
+      const commitDate = new Date(commit.date);
+      return commitDate >= startOfDay;
+    })
+    .map((commit) => ({
+      hash: commit.hash,
+      author: commit.author_name,
+      date: commit.date,
+      message: commit.message,
+    }));
+
+  return todayCommits;
+}
+
 export async function getDiffSummary() {
   await ensureRepository();
   return git.diffSummary();
 }
+
+export { NotGitRepoError };

@@ -1,0 +1,14 @@
+name: "GitBrain AI Analysis"
+description: "AI-powered Git analysis for PR risk and commit insights"
+
+inputs:
+  provider:
+    description: "AI provider (openai or gemini)"
+    required: false
+  api_key:
+    description: "API key"
+    required: false
+
+runs:
+  using: "node20"
+  main: "index.js"
