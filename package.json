@@ -1,0 +1,23 @@
+{
+  "name": "devbrain",
+  "version": "0.1.0",
+  "description": "DevBrain CLI for Git-based developer insights and PR risk analysis.",
+  "bin": {
+    "devbrain": "./bin/index.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node ./bin/index.js",
+    "dev": "node ./bin/index.js",
+    "check": "node --check ./bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "simple-git": "^3.19.1"
+  },
+  "license": "MIT"
+}
