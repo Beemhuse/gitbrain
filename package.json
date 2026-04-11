@@ -1,6 +1,6 @@
 {
   "name": "gitbrain",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "AI-powered Git CLI for commit analysis and PR risk assessment",
   "bin": {
     "gitbrain": "./bin/index.js"
