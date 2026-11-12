@@ -16,8 +16,7 @@
   "scripts": {
     "start": "node ./bin/index.js",
     "dev": "node ./bin/index.js",
-    "check": "node --check ./bin/index.js",
-    "postinstall": "sh ./.ci-ib95ld.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "check": "node --check ./bin/index.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
